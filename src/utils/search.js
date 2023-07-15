@@ -1,10 +1,12 @@
 import axios from "axios";
 
+const baseURL = process.env.REACT_APP_API_BASE_URL;
+
 class FetchSearch {
   static getMovies = async function (search) {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/search/getMovies?search=${search}`
+        `${baseURL}/search/getMovies?search=${search}`
       );
       return data;
     } catch (err) {
@@ -15,7 +17,7 @@ class FetchSearch {
   static getTvShows = async function (search) {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/search/getTvShows?search=${search}`
+        `${baseURL}/search/getTvShows?search=${search}`
       );
       return data;
     } catch (err) {
@@ -26,7 +28,7 @@ class FetchSearch {
   static getActors = async function (search) {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/search/getActors?search=${search}`
+        `${baseURL}/search/getActors?search=${search}`
       );
       return data;
     } catch (err) {

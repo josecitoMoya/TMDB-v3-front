@@ -1,10 +1,12 @@
 import axios from "axios";
 
+const baseURL = process.env.REACT_APP_API_BASE_URL;
+
 class FetchMovies {
   static getMovie = async function (movieId) {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/movies/single-movie?id=${movieId}`
+        `${baseURL}/movies/single-movie?id=${movieId}`
       );
       return data;
     } catch (err) {
@@ -15,7 +17,7 @@ class FetchMovies {
   static getMovieCredits = async function (movieId) {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/movies/movie-credits?id=${movieId}`
+        `${baseURL}/movies/movie-credits?id=${movieId}`
       );
       return data;
     } catch (err) {
@@ -25,9 +27,7 @@ class FetchMovies {
 
   static getPopularMovies = async function () {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/api/movies/popular-movies`
-      );
+      const { data } = await axios.get(`${baseURL}/movies/popular-movies`);
       console.log("SOY DATA EN POP", data);
       return data;
     } catch (err) {
@@ -37,9 +37,7 @@ class FetchMovies {
 
   static getPopularMovies = async function () {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/api/movies/popular-movies`
-      );
+      const { data } = await axios.get(`${baseURL}/movies/popular-movies`);
       return data;
     } catch (err) {
       console.error(err);
@@ -48,9 +46,7 @@ class FetchMovies {
 
   static getTopRatedMovies = async function () {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/api/movies/top-rated-movies`
-      );
+      const { data } = await axios.get(`${baseURL}/movies/top-rated-movies`);
       return data;
     } catch (err) {
       console.error(err);
@@ -59,9 +55,7 @@ class FetchMovies {
 
   static getUpComingMovies = async function () {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/api/movies/up-coming-movies`
-      );
+      const { data } = await axios.get(`${baseURL}/movies/up-coming-movies`);
       return data;
     } catch (err) {
       console.error(err);
@@ -70,9 +64,7 @@ class FetchMovies {
 
   static getSearched = async function () {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/api/movies/up-coming-movies`
-      );
+      const { data } = await axios.get(`${baseURL}/movies/up-coming-movies`);
       return data;
     } catch (err) {
       console.error(err);

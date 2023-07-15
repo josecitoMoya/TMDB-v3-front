@@ -17,7 +17,6 @@ import FetchFavorites from "../utils/favorites";
 import logo from "../assets/logo-JM.png";
 
 export const MovieCard = ({ item }) => {
-  console.log("soy list", item);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const imageUrl = "https://image.tmdb.org/t/p/w500";
