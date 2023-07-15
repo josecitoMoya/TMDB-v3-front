@@ -14,12 +14,11 @@ import {
 
 axios.defaults.withCredentials = true;
 
+const baseURL = process.env.REACT_APP_API_BASE_URL;
 export const fetchDiscoverMovies = () => async (dispatch) => {
   try {
     dispatch(setIsLoading(true));
-    const response = await axios.get(
-      `http://localhost:8080/api/movies/all-movies`
-    );
+    const response = await axios.get(`${baseURL}/movies/all-movies`);
     dispatch(setDiscoverMovies(response.data.results));
     dispatch(setIsLoading(false));
   } catch (err) {
@@ -32,9 +31,7 @@ export const fetchDiscoverMovies = () => async (dispatch) => {
 export const fetchSingleMovie = (id) => async (dispatch) => {
   try {
     dispatch(setIsLoading(true));
-    const response = await axios.get(
-      `http://localhost:8080/api/tmdb/single-movie?id=${id}`
-    );
+    const response = await axios.get(`${baseURL}/tmdb/single-movie?id=${id}`);
     dispatch(setMovie(response.data));
     dispatch(setIsLoading(false));
     return response.data;
@@ -47,9 +44,7 @@ export const fetchSingleMovie = (id) => async (dispatch) => {
 export const fetchMovieCredits = (id) => async (dispatch) => {
   try {
     dispatch(setIsLoading(true));
-    const response = await axios.get(
-      `http://localhost:8080/api/tmdb/movie-credits?id=${id}`
-    );
+    const response = await axios.get(`${baseURL}/tmdb/movie-credits?id=${id}`);
     dispatch(setMovieCredits(response.data));
     dispatch(setIsLoading(false));
   } catch (err) {
@@ -62,7 +57,7 @@ export const fetchTvCredits = (id) => async (dispatch) => {
   try {
     dispatch(setIsLoading(true));
     const response = await axios.get(
-      `http://localhost:8080/api/tv-show/tv-show-credits?id=${id}`
+      `${baseURL}/tv-show/tv-show-credits?id=${id}`
     );
     dispatch(setMovieCredits(response.data));
     dispatch(setIsLoading(false));
@@ -75,9 +70,7 @@ export const fetchTvCredits = (id) => async (dispatch) => {
 export const fetchTopRatedMovies = () => async (dispatch) => {
   try {
     dispatch(setIsLoading(true));
-    const response = await axios.get(
-      `http://localhost:8080/api/tmdb/top-rated-movies`
-    );
+    const response = await axios.get(`${baseURL}/tmdb/top-rated-movies`);
     dispatch(setTopRatedMovies(response.data));
     dispatch(setIsLoading(false));
   } catch (err) {
@@ -89,7 +82,7 @@ export const fetchUpComingMovies = (data) => async (dispatch) => {
   try {
     dispatch(setIsLoading(true));
     const response = await axios.get(
-      `http://localhost:8080/api/favorites/favorite-movies?email=${data}`,
+      `${baseURL}/favorites/favorite-movies?email=${data}`,
       data,
       { withCredentials: true, credential: "include" }
     );

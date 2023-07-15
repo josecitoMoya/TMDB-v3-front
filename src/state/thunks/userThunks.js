@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setError, setIsLoading, setUser, setUsers } from "../slices/userSlice";
 
-const fetchUrl = "http://localhost:8080/api";
+const fetchUrl = process.env.REACT_APP_API_BASE_URL;
 
 axios.defaults.withCredentials = true;
 

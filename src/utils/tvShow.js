@@ -1,11 +1,13 @@
 import axios from "axios";
 
+const baseURL = process.env.REACT_APP_API_BASE_URL;
+
 class FetchTvShow {
   static getTvShow = async function (tvShowId) {
     console.log("SOY EL ID", tvShowId);
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/tv-show/tv-show?id=${tvShowId}`
+        `${baseURL}/tv-show/tv-show?id=${tvShowId}`
       );
       return data;
     } catch (err) {
@@ -16,7 +18,7 @@ class FetchTvShow {
   static getTvShowsCredits = async function (tvShowId) {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/tv-show/tv-show-credits?id=${tvShowId}`
+        `${baseURL}/tv-show/tv-show-credits?id=${tvShowId}`
       );
       return data;
     } catch (err) {
@@ -26,9 +28,7 @@ class FetchTvShow {
 
   static getPopularTvShows = async function () {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/api/tv-show/popular-tv-shows`
-      );
+      const { data } = await axios.get(`${baseURL}/tv-show/popular-tv-shows`);
       return data;
     } catch (err) {
       console.error(err);
@@ -37,9 +37,7 @@ class FetchTvShow {
 
   static getTopRatedTvShows = async function () {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/api/tv-show/top-rated-tv-shows`
-      );
+      const { data } = await axios.get(`${baseURL}/tv-show/top-rated-tv-shows`);
       return data;
     } catch (err) {
       console.error(err);
@@ -48,9 +46,7 @@ class FetchTvShow {
 
   static getUpComingTvShows = async function () {
     try {
-      const { data } = await axios.get(
-        `http://localhost:8080/api/tv-show/up-coming-tv-shows`
-      );
+      const { data } = await axios.get(`${baseURL}/tv-show/up-coming-tv-shows`);
       return data;
     } catch (err) {
       console.error(err);
